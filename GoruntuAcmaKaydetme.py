@@ -6,15 +6,15 @@ Created on Mon Nov 10 22:01:52 2025
 """
 import cv2
 
-#resimi okuma
-img= cv2.imread("araba.jpg") # ("araba.jpg",0) yaparsak gri olarak kaydeder.
-#resimi gösterme
-cv2.imshow("ARABA",img)
+# Read the image
+image = cv2.imread("araba.jpg") # Adding 0 as a second parameter reads it in grayscale
 
-k= cv2.waitKey(0)
+# Display the image
+cv2.imshow("Car Image", image)
 
-if k==27:#esc tuşuna basılınca direkt çıkılıyor.
+keyPressed = cv2.waitKey(0)
+if keyPressed == 27: # Exit if ESC key is pressed
     cv2.destroyAllWindows()
-elif k==ord('s'):#s tuşuna basılırsa resimi kaydediyor ve ekranı kapatıyor.
-    cv2.imwrite("araba_kaydetme.png", img)
+elif keyPressed == ord('s'): # Save the image and exit if 's' key is pressed
+    cv2.imwrite("savedCar.png", image)
     cv2.destroyAllWindows()
