@@ -82,12 +82,7 @@
           <p style="margin:4px 0 0;color:var(--muted)">${home && u.ev
             ? `${esc(u.ev.tip)} ev · ${u.ev.bosOda} boş oda`
             : "Ayırabileceği aylık kira payı"}</p>
-          <div class="actions">
-            <button type="button" class="btn-pill btn-cyan" style="color:#fff" data-toast="Mesajlaşma bir sonraki aşamada eklenecek.">✉️ İletişime Geç</button>
-            <button type="button" class="btn-pill btn-ghost" data-toast="Favorilere eklendi (örnek).">♡ Favorilere Ekle</button>
-            <button type="button" class="btn-pill btn-ghost" data-toast="Şikayetiniz alındı (örnek).">⚑ Şikayet Et</button>
-          </div>
-          <div class="notice">
+          <div class="notice" style="margin-top:16px">
             <strong>🔒 Güvenlik uyarısı</strong>
             Kişiyle yüz yüze görüşmeden kapora veya ön ödeme yapmayın. E-posta ve telefon bilgileri gizlidir.
           </div>
@@ -107,15 +102,4 @@
       </aside>
     </div>`;
 
-  // Örnek eylemler için geçici bildirim
-  const toast = document.getElementById("toast");
-  let t;
-  root.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-toast]");
-    if (!b) return;
-    toast.textContent = b.dataset.toast;
-    toast.classList.add("show");
-    clearTimeout(t);
-    t = setTimeout(() => toast.classList.remove("show"), 2200);
-  });
 })();

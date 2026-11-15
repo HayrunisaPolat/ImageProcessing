@@ -33,6 +33,8 @@ Mantık: **gruplar arası AND, grup içi OR**; hiçbiri seçili değilse (= "Hep
 - `index.html` – filtre paneli + kullanıcı kartları (listeleme)
 - `profil.html?id=N` – kullanıcı profili (görüntüleme): hakkında, bilgiler, yaşam tarzı, bütçe/ev bilgisi, benzer profiller
 
+Kapsam: yalnızca filtreleme ve görüntüleme. Giriş/kayıt, mesajlaşma, favori ve şikayet diğer ekip üyelerinin modülleridir; bu prototipte yoktur.
+
 ## Gizlilik (KVKK / teklif formu)
 E-posta, telefon ve tam soyad veri modelinde **yoktur**. Soyadın yalnızca ilk harfi tutulur,
 arayüzde `Ayşe K**` olarak gösterilir. Fotoğraf yerine baş harfli avatar kullanılır
