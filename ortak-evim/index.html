@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ortak Evim | Ev Arkadaşı Bul</title>
+  <meta name="description" content="Konum, yaş, bütçe ve yaşam tarzına göre ev arkadaşı ve kiralık ev ilanlarını filtrele.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,300;0,500;0,700;0,800;1,300;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Ortak Evim ana sayfa">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="50" fill="#5f78ff"/>
+        <path d="M77 50A27 27 0 1 0 63.5 73.4" fill="none" stroke="#fff" stroke-width="14"/>
+        <rect x="23" y="43" width="54" height="12" fill="#fff"/>
+        <path d="M77 50A27 27 0 0 1 63.5 73.4" fill="none" stroke="#ffd54a" stroke-width="14"/>
+      </svg>
+      ORTAK EVİM
+    </a>
+    <nav aria-label="Hesap">
+      <a class="hide-sm" href="#">Zaten üye misiniz? <strong>Giriş Yap</strong></a>
+      <a class="btn-pill btn-dark" href="#">👤＋ KAYIT OL</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Ev Kiralamak da, <strong>Ev Arkadaşı Bulmak da Çok Kolay!</strong></h1>
+  </section>
+
+  <div class="layout">
+
+    <!-- ================= FİLTRE PANELİ ================= -->
+    <form class="filters" id="filterForm" aria-label="Filtreler" autocomplete="off" onsubmit="return false">
+      <h2 class="sr-only">Filtreler</h2>
+
+      <!-- 1. Konum -->
+      <div class="group">
+        <label class="sr-only" for="fSehir">Konum / Şehir</label>
+        <select id="fSehir" class="select-pill"></select>
+      </div>
+
+      <!-- 2. Ne arıyorsunuz -->
+      <div class="group">
+        <p class="field-title">Ne Arıyorsunuz?</p>
+        <div class="checks" data-group="tur">
+          <label><input type="checkbox" value="ev-arkadasi"> Ev Arkadaşı</label>
+          <label><input type="checkbox" value="kiralik-ev"> Kiralık Ev</label>
+          <label><input type="checkbox" value="all"> Hepsi</label>
+        </div>
+      </div>
+
+      <!-- 3. Yaş -->
+      <div class="group">
+        <p class="field-title">Yaş <small id="yasLabel">18 – 40</small></p>
+        <div class="range" id="yasRange">
+          <div class="track"></div><div class="fill"></div>
+          <input type="range" id="fYasMin" min="18" max="40" step="1" value="18" aria-label="En düşük yaş">
+          <input type="range" id="fYasMax" min="18" max="40" step="1" value="40" aria-label="En yüksek yaş">
+        </div>
+        <div class="range-scale"><span>18</span><span>40</span></div>
+      </div>
+
+      <!-- 4. Cinsiyet -->
+      <div class="group">
+        <p class="field-title">Cinsiyet</p>
+        <div class="checks" data-group="cins">
+          <label><input type="checkbox" value="kadin"> Kadın</label>
+          <label><input type="checkbox" value="erkek"> Erkek</label>
+          <label><input type="checkbox" value="all"> Hepsi</label>
+        </div>
+      </div>
+
+      <!-- Detaylı filtreler (teklif formundaki yaşam tarzı kriterleri) -->
+      <details class="more" id="moreFilters">
+        <summary>Daha Fazla Filtre</summary>
+
+        <div class="group">
+          <p class="field-title">Aylık Bütçe <small id="butceLabel">Fark etmez</small></p>
+          <div class="range" id="butceRange">
+            <div class="track"></div><div class="fill"></div>
+            <input type="range" id="fButce" min="2000" max="15000" step="500" value="15000" aria-label="En yüksek aylık bütçe">
+          </div>
+          <div class="range-scale"><span>₺2.000</span><span>₺15.000+</span></div>
+        </div>
+
+        <div class="group">
+          <p class="field-title">Statü</p>
+          <div class="checks" data-group="statu">
+            <label><input type="checkbox" value="ogrenci"> Öğrenci</label>
+            <label><input type="checkbox" value="calisan"> Çalışan</label>
+          </div>
+          <div class="checks" style="margin-top:12px">
+            <label><input type="checkbox" id="fDogru"> ✓ Sadece doğrulanmış öğrenciler</label>
+          </div>
+        </div>
+
+        <div class="group">
+          <label class="field-title" for="fQ">Bölüm / Üniversite / Meslek</label>
+          <input type="search" id="fQ" class="input-pill" placeholder="örn. Bilgisayar, Selçuk, Hemşire">
+        </div>
+
+        <div class="group">
+          <p class="field-title">Uyku Düzeni</p>
+          <div class="checks" data-group="uyku">
+            <label><input type="checkbox" value="erken"> Erken yatar</label>
+            <label><input type="checkbox" value="gece"> Gece kuşu</label>
+            <label><input type="checkbox" value="esnek"> Esnek</label>
+          </div>
+        </div>
+
+        <div class="group">
+          <p class="field-title">Ders / Çalışma Düzeni</p>
+          <div class="checks checks--col" data-group="calisma">
+            <label><input type="checkbox" value="sessiz"> Evde sessizlik ister</label>
+            <label><input type="checkbox" value="disari"> Dışarıda çalışır</label>
+            <label><input type="checkbox" value="esnek"> Fark etmez</label>
+          </div>
+        </div>
+
+        <div class="group">
+          <p class="field-title">Evcil Hayvan</p>
+          <div class="checks checks--col" data-group="hayvan">
+            <label><input type="checkbox" value="sahibi"> Evcil hayvanı var</label>
+            <label><input type="checkbox" value="sorun-degil"> Hayvana sorunu yok</label>
+            <label><input type="checkbox" value="istemiyor"> Evcil hayvan istemiyor</label>
+          </div>
+        </div>
+
+        <div class="group">
+          <p class="field-title">Sigara</p>
+          <div class="checks" data-group="sigara">
+            <label><input type="checkbox" value="icmiyor"> İçmiyor</label>
+            <label><input type="checkbox" value="icer"> İçiyor</label>
+          </div>
+        </div>
+      </details>
+
+      <div class="filters-actions">
+        <button type="button" class="btn-pill btn-cyan" id="btnAra">🔍 ARA <span id="araCount"></span></button>
+        <button type="button" class="link-btn" id="btnReset">Filtreleri temizle</button>
+      </div>
+    </form>
+
+    <!-- ================= SONUÇLAR ================= -->
+    <main id="results" tabindex="-1">
+      <div class="results-head">
+        <h2 aria-live="polite"><span id="resCount">0</span> kişi bulundu</h2>
+        <div class="sort">
+          <label for="fSirala">Sırala:</label>
+          <select id="fSirala" class="select-pill select-pill--sm">
+            <option value="yeni">En yeni</option>
+            <option value="butce-artan">Bütçe (artan)</option>
+            <option value="butce-azalan">Bütçe (azalan)</option>
+            <option value="yas-artan">Yaş (küçükten büyüğe)</option>
+          </select>
+        </div>
+      </div>
+      <div class="active-chips" id="activeChips"></div>
+      <div class="grid" id="grid"></div>
+    </main>
+  </div>
+
+  <footer class="site">
+    <p><a href="#">Hakkımızda</a><a href="#">Hizmet Şartları ve Koşulları</a><a href="#">KVKK ve Gizlilik Politikası</a><a href="#">İletişim</a></p>
+    <p>© 2023-2026 Ortakevim.com | Tüm Hakları Saklıdır.</p>
+  </footer>
+</div>
+
+<script src="assets/js/users.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/filter.js"></script>
+</body>
+</html>
