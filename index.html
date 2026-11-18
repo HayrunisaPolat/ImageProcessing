@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Kediler</title>
+  <style>
+    .kedi { border: 1px solid #999; border-radius: 8px; padding: 8px; margin: 8px; width: 160px; }
+  </style>
+</head>
+<body>
+  <div id="kediler"></div>
+
+  <script>
+    fetch("/kedi1.json")
+      .then((res) => res.json())
+      .then((kediler) => {
+        document.getElementById("kediler").innerHTML = kediler
+          .map(
+            (kedi) => `
+            <div class="kedi">
+              <p>ID: ${kedi.id}</p>
+              <p>İsim: ${kedi.isim}</p>
+              <p>Renk: ${kedi.renk}</p>
+              <p>Yaş: ${kedi.yas}</p>
+            </div>`
+          )
+          .join("");
+      });
+  </script>
+</body>
+</html>
