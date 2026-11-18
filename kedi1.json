@@ -1,0 +1,7 @@
+[
+  { "id": 1, "isim": "Pamuk", "renk": "Beyaz", "yas": 2 },
+  { "id": 2, "isim": "Tekir", "renk": "Gri", "yas": 4 },
+  { "id": 3, "isim": "Mırmır", "renk": "Sarı", "yas": 1 },
+  { "id": 4, "isim": "Boncuk", "renk": "Siyah", "yas": 3 },
+  { "id": 5, "isim": "Duman", "renk": "Duman", "yas": 5 }
+]
