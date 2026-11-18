@@ -22,6 +22,9 @@
               <p>İsim: ${kedi.isim}</p>
               <p>Renk: ${kedi.renk}</p>
               <p>Yaş: ${kedi.yas}</p>
+              <ul>
+                ${kedi.oyuncaklar.map((oyuncak) => `<li>${oyuncak}</li>`).join("")}
+              </ul>
             </div>`
           )
           .join("");
